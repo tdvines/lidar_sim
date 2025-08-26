@@ -1,0 +1,849 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+
+
+<model name="ADcar_model">
+
+	<static>false</static>
+
+	<!-- Load collision properties of ad-car using ad-car mesh -->
+
+  <link name="chassis">
+      <collision name="collision">
+        <pose>0 0 0.01 0 0 1.5707</pose>
+        <geometry>
+          <mesh>
+            <scale>0.0254 0.0254 0.0254</scale>
+            <uri>model://ADcar_model/meshes/hatchback.obj</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <pose>0 0 0.01 0 0 1.5707</pose>
+        <geometry>
+          <mesh>
+            <scale>0.0254 0.0254 0.0254</scale>
+            <uri>model://ADcar_model/meshes/hatchback.obj</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <inertial>
+        <mass>1200.0</mass> <!-- in kilograms, adjust for a real car -->
+        <inertia>
+          <ixx>400.0</ixx>
+          <iyy>1200.0</iyy>
+          <izz>1400.0</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+    </link>
+
+
+
+
+	<!--  FRONT right wheel  -->
+
+	<link name="front_right_wheel">
+            <pose>1.55 -0.93 0.3 0 1.5707 1.5707</pose>
+
+             <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>.25</radius>
+              <length>.2</length>
+            </cylinder>
+          </geometry>
+
+          <surface>
+            <friction>
+              <ode>
+                <mu>1.1</mu>
+                <mu2>1.1</mu2>
+                <slip1>0.0</slip1>
+                <slip2>0.0</slip2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <min_depth>0.001</min_depth>
+                <kp>1e9</kp>
+              </ode>
+            </contact>
+          </surface>
+
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>.25</radius>
+              <length>.2</length>
+            </cylinder>
+          </geometry>
+        </visual>
+        <inertial>
+          <mass>20.0</mass> <!-- wheels are lighter -->
+          <inertia>
+            <ixx>0.6</ixx>
+            <iyy>0.6</iyy>
+            <izz>0.6</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+
+	<!-- FRONT left wheel  -->
+
+	<link name="front_left_wheel">
+        <pose>1.55 0.93 0.3 0 1.5707 1.5707</pose>
+          <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>.25</radius>
+              <length>.2</length>
+            </cylinder>
+          </geometry>
+
+          <surface>
+            <friction>
+              <ode>
+                <mu>1.1</mu>
+                <mu2>1.1</mu2>
+                <slip1>0.0</slip1>
+                <slip2>0.0</slip2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <min_depth>0.001</min_depth>
+                <kp>1e9</kp>
+              </ode>
+            </contact>
+          </surface>
+
+
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>.25</radius>
+              <length>.2</length>
+            </cylinder>
+          </geometry>
+        </visual>
+        <inertial>
+          <mass>20.0</mass> <!-- wheels are lighter -->
+          <inertia>
+            <ixx>0.6</ixx>
+            <iyy>0.6</iyy>
+            <izz>0.6</izz>
+          </inertia>
+        </inertial>
+
+      </link>
+
+      <link name="front_left_wheel_steer">
+        <pose>1.55 0.93 0.3 0 0 0</pose>
+        <inertial>
+          <mass>1.0</mass>
+          <inertia><ixx>0.01</ixx><iyy>0.01</iyy><izz>0.01</izz></inertia>
+        </inertial>
+      </link>
+
+      <link name="front_right_wheel_steer">
+        <pose>1.55 -0.93 0.3 0 0 0</pose>
+        <inertial>
+          <mass>1.0</mass>
+          <inertia><ixx>0.01</ixx><iyy>0.01</iyy><izz>0.01</izz></inertia>
+        </inertial>
+      </link>
+
+
+
+
+	<!-- REAR Left wheel  -->
+
+	<link name="rear_left_wheel">
+        <pose>-1.0 0.93 0.3 0 1.5707 1.5707</pose>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>.25</radius>
+              <length>.2</length>
+            </cylinder>
+          </geometry>
+
+          <surface>
+            <friction>
+              <ode>
+                <mu>2.1</mu>
+                <mu2>2.1</mu2>
+                <slip1>0.0</slip1>
+                <slip2>0.0</slip2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <min_depth>0.001</min_depth>
+                <kp>1e9</kp>
+              </ode>
+            </contact>
+          </surface>
+
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>.25</radius>
+              <length>.2</length>
+            </cylinder>
+          </geometry>
+        </visual>
+        <inertial>
+          <mass>20.0</mass> <!-- wheels are lighter -->
+          <inertia>
+            <ixx>0.6</ixx>
+            <iyy>0.6</iyy>
+            <izz>0.6</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+	<!-- REAR Right wheel  -->
+
+	<link name="rear_right_wheel">
+      <pose>-1.0 -0.93 0.3 0 1.5707 1.5707</pose>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>.25</radius>
+              <length>.2</length>
+            </cylinder>
+          </geometry>
+
+          <surface>
+            <friction>
+              <ode>
+                <mu>2.1</mu>
+                <mu2>2.1</mu2>
+                <slip1>0.0</slip1>
+                <slip2>0.0</slip2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <min_depth>0.001</min_depth>
+                <kp>1e9</kp>
+
+              </ode>
+            </contact>
+          </surface>
+        </collision>
+
+
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>.25</radius>
+              <length>.2</length>
+            </cylinder>
+          </geometry>
+        </visual>
+        <inertial>
+          <mass>20.0</mass> <!-- wheels are lighter -->
+          <inertia>
+              <ixx>0.6</ixx>
+              <iyy>0.6</iyy>
+              <izz>0.6</izz>
+            </inertia>
+        </inertial>
+      </link>
+
+
+	<!-- REAR right and left wheel joints  -->
+
+      <joint type="revolute" name="rear_left_wheel_joint">
+       <pose>0 0 0 0 0 0</pose>
+        <child>rear_left_wheel</child>
+        <parent>chassis</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+        </axis>
+      </joint>
+
+      <joint type="revolute" name="rear_right_wheel_joint">
+        <pose>0 0 0 0 0 0</pose>
+        <child>rear_right_wheel</child>
+        <parent>chassis</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+        </axis>
+      </joint>
+
+<!-- FRONT LEFT WHEEL -->
+
+<!-- Steering joint (same axis as your universal joint axis) -->
+<joint name="front_left_steer_joint" type="revolute">
+  <parent>chassis</parent>
+  <child>front_left_wheel_steer</child>
+  <pose>0 0 0 0 0 0</pose>
+  <axis>
+    <xyz>0 0 1</xyz>  <!-- Keep same steering axis as before -->
+    <limit>
+      <lower>-0.5</lower>
+      <upper>0.5</upper>
+    </limit>
+  </axis>
+</joint>
+
+<!-- Wheel rotation joint (same axis as your universal joint axis2) -->
+<joint name="front_left_wheel_joint" type="revolute">
+  <parent>front_left_wheel_steer</parent>
+  <child>front_left_wheel</child>
+  <pose>0 0 0 0 0 0</pose>
+  <axis>
+    <xyz>0 0 1</xyz>  <!-- Keep same rolling axis as before -->
+    <dynamics>
+      <friction>0.0474092253</friction>
+    </dynamics>
+  </axis>
+</joint>
+
+
+<!-- FRONT RIGHT WHEEL -->
+
+<!-- Steering joint -->
+<joint name="front_right_steer_joint" type="revolute">
+  <parent>chassis</parent>
+  <child>front_right_wheel_steer</child>
+  <pose>0 0 0 0 0 0</pose>
+  <axis>
+    <xyz>0 0 1</xyz>  <!-- Keep same steering axis -->
+    <limit>
+      <lower>-0.5</lower>
+      <upper>0.5</upper>
+    </limit>
+  </axis>
+</joint>
+
+<!-- Wheel rotation joint -->
+<joint name="front_right_wheel_joint" type="revolute">
+  <parent>front_right_wheel_steer</parent>
+  <child>front_right_wheel</child>
+  <pose>0 0 0 0 0 0</pose>
+  <axis>
+    <xyz>0 0 1</xyz>  <!-- Keep same rolling axis -->
+    <dynamics>
+      <friction>0.0474092253</friction>
+    </dynamics>
+  </axis>
+</joint>
+
+
+
+ 	<!-- PLUGIN for Ackermann steering and drive
+Manual publish address for troubleshooting:
+ros2 topic pub /ecart/cmd_vel geometry_msgs/msg/Twist '{linear: {x: 1.0}, angular: {z: 0.4}}' -1 
+
+-->   
+
+
+	<plugin name='ackermann_drive' filename='libgazebo_ros_ackermann_drive.so'>
+
+        <ros>
+          <namespace>ecart</namespace>
+          <remapping>cmd_vel:=cmd_vel</remapping>
+          <remapping>odom:=odom</remapping>
+          <remapping>distance:=distance</remapping>
+        </ros>
+        <update_rate>25.0</update_rate>
+        <!-- wheels -->          
+        <rear_left_joint>rear_left_wheel_joint</rear_left_joint>
+        <rear_right_joint>rear_right_wheel_joint</rear_right_joint>
+        <front_left_joint>front_left_wheel_joint</front_left_joint>
+        <front_right_joint>front_right_wheel_joint</front_right_joint>
+        <left_steering_joint>front_left_steer_joint</left_steering_joint>
+        <right_steering_joint>front_right_steer_joint</right_steering_joint>
+
+        <!-- <steering_wheel_joint>steering_joint</steering_wheel_joint>  -->    
+
+        <!-- Max absolute steer angle for tyre in radians-->
+        <!-- Any cmd_vel angular z greater than this would be capped -->
+        <max_steer>0.72</max_steer>          <!-- wheels -->
+        <max_steering_angle>0.72</max_steering_angle>  <!-- steering wheel -->
+
+        <!-- Max absolute linear speed in m/s -->           
+        <max_speed>10</max_speed>
+
+        <!-- limits -->
+        <max_wheel_torque>30</max_wheel_torque>
+
+
+      <!-- PID for using telepkeyboard to drive -->
+      
+      <left_steering_pid_gain>800 1 15</left_steering_pid_gain>
+      <left_steering_i_range>0 0</left_steering_i_range>
+      <right_steering_pid_gain>800 1 15</right_steering_pid_gain>
+      <right_steering_i_range>0 0</right_steering_i_range>
+
+      <!-- Linear velocity PID -->
+      <linear_velocity_pid_gain>800 0.5 5</linear_velocity_pid_gain>
+      <linear_velocity_i_range>0 0</linear_velocity_i_range>
+
+
+
+
+
+        <!-- output -->          
+        <publish_odom>false</publish_odom>
+        <publish_odom_tf>false</publish_odom_tf>
+        <publish_wheel_tf>true</publish_wheel_tf>
+        <publish_distance>false</publish_distance>
+
+        <odometry_frame>odom_demo</odometry_frame>
+        <robot_base_frame>chassis</robot_base_frame>
+
+      </plugin>
+
+
+<!-- Camera  -->	
+
+ <!-- <link name="cam1">
+	<pose>1 -0.1 1.4 0 0.2 0</pose>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000166667</ixx>
+          <iyy>0.000166667</iyy>
+          <izz>0.000166667</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+      </visual>
+     <sensor name="camera1" type="camera">
+    <camera name="camera1">
+      <horizontal_fov>1.047</horizontal_fov>
+      <image>
+        <width>600</width>
+        <height>600</height>
+      </image>
+      <clip>
+        <near>0.1</near>
+        <far>100</far>
+      </clip>
+    </camera>
+    <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+    <cameraName>camera1</cameraName>
+      <ros>
+        <namespace>camera1</namespace>
+        <image_topic_name>image_raw</image_topic_name>
+        
+      </ros>
+      <always_on>true</always_on>
+      <update_rate>1.0</update_rate>
+      <visualize>true</visualize>
+    </plugin>
+  </sensor>
+ </link> -->
+
+ <!-- <link name="cam2">
+	<pose>1 0.1 1.4 0 0.2 0</pose>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000166667</ixx>
+          <iyy>0.000166667</iyy>
+          <izz>0.000166667</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+      </visual>
+       <sensor name="camera2" type="camera">
+        <camera name="camera2">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>600</width>
+            <height>600</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <cameraName>camera2</cameraName>
+          <ros>
+            <namespace>camera2</namespace>
+            <image_topic_name>image_raw</image_topic_name>
+          </ros>
+          <always_on>true</always_on>
+          <update_rate>1.0</update_rate>
+          <visualize>true</visualize>
+        </plugin>
+      </sensor>
+ </link> -->
+
+     <joint name="camera_joint1" type="fixed">
+      <child>cam1</child>
+      <parent>chassis</parent>
+    </joint>
+
+    <joint name="camera_joint2" type="fixed">
+      <child>cam2</child>
+      <parent>chassis</parent>
+    </joint>
+
+
+  <!-- LIDAR -->
+  <link name="lidar_3d_link">
+  <pose>0.5 0 1.6 0 0 0</pose>
+  <inertial>
+    <mass>0.5</mass>
+    <inertia>
+      <ixx>0.001</ixx>
+      <iyy>0.001</iyy>
+      <izz>0.001</izz>
+    </inertia>
+  </inertial>
+  <collision name="collision">
+    <geometry>
+      <cylinder>
+        <radius>0.07</radius>
+        <length>0.12</length>
+      </cylinder>
+    </geometry>
+  </collision>
+  <visual name="visual">
+    <geometry>
+      <cylinder>
+        <radius>0.07</radius>
+        <length>0.12</length>
+      </cylinder>
+    </geometry>
+  </visual>
+    <sensor name="solid_lidar" type="gpu_ray">
+      <pose>0 0 0 0 0 0</pose>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>2160</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.5708</min_angle> <!-- -90 deg -->
+            <max_angle>1.5708</max_angle>  <!-- +90 deg -->
+          </horizontal>
+          <vertical>
+            <samples>128</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.2618</min_angle> <!-- -15 deg -->
+            <max_angle>0.2618</max_angle>  <!-- +15 deg -->
+          </vertical>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="lidar_controller" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <remapping>~/out:=scan_pointcloud</remapping>
+        </ros>
+        <output_type>sensor_msgs/PointCloud2</output_type>
+        <frame_name>base_scan</frame_name>
+        <alwaysOn>1</alwaysOn>
+        <visualize>true</visualize>
+      </plugin>
+  </sensor>
+</link>
+
+<joint name="lidar_3d_joint" type="fixed">
+  <parent>chassis</parent>
+  <child>lidar_3d_link</child>
+</joint>
+
+
+<!-- far_left LIDAR LINK -->
+<link name="lidar_3d_far_left_link">
+  <pose>0.6 0.5 1.5 0 0 0</pose>
+  <!-- visual for testing -->
+  <visual name="visual">
+    <geometry>
+      <cylinder>
+        <radius>0.07</radius>
+        <length>0.12</length>
+      </cylinder>
+    </geometry>
+    <material>
+      <ambient>0 1 0 1</ambient>
+      <diffuse>0 1 0 1</diffuse>
+    </material>
+  </visual>
+  <inertial>
+    <mass>0.5</mass>
+    <inertia>
+      <ixx>0.001</ixx>
+      <iyy>0.001</iyy>
+      <izz>0.001</izz>
+    </inertia>
+  </inertial>
+  <!-- far_left LIDAR SENSOR -->
+  <sensor name="solid_lidar_far_left" type="gpu_ray">
+    <pose>0 0 0 0 0 0</pose>
+    <update_rate>5</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>2160</samples>
+          <resolution>1</resolution>
+            <min_angle>-0.523599</min_angle> <!-- -30 deg -->
+            <max_angle>0.523599</max_angle>  <!-- +30 deg -->
+        </horizontal>
+        <vertical>
+          <samples>256</samples>
+          <resolution>1</resolution>
+            <min_angle>-0.523599</min_angle> <!-- -30 deg -->
+            <max_angle>0.523599</max_angle>  <!-- +30 deg -->
+        </vertical>
+      </scan>
+      <range>
+        <min>0.2</min>
+        <max>100.0</max>
+        <resolution>0.01</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+    <plugin name="lidar_controller_far_left" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <remapping>~/out:=/scan_pointcloud_far_left</remapping>
+      </ros>
+      <output_type>sensor_msgs/PointCloud2</output_type>
+      <frame_name>base_scan_far_left</frame_name>
+      <alwaysOn>1</alwaysOn>
+      <visualize>true</visualize>
+    </plugin>
+  </sensor>
+</link>
+
+<!-- JOINT connecting far_left LIDAR to chassis -->
+<joint name="lidar_3d_far_left_joint" type="fixed">
+  <parent>chassis</parent>
+  <child>lidar_3d_far_left_link</child>
+</joint>
+
+
+
+
+<!-- FAR RIGHT LIDAR LINK -->
+<link name="lidar_3d_far_right_link">
+  <pose>0.6 -0.5 1.5 0 0 0</pose>
+  <!-- visual for testing -->
+  <visual name="visual">
+    <geometry>
+      <cylinder>
+        <radius>0.07</radius>
+        <length>0.12</length>
+      </cylinder>
+    </geometry>
+    <material>
+      <ambient>0 1 0 1</ambient>
+      <diffuse>0 1 0 1</diffuse>
+    </material>
+  </visual>
+  <inertial>
+    <mass>0.5</mass>
+    <inertia>
+      <ixx>0.001</ixx>
+      <iyy>0.001</iyy>
+      <izz>0.001</izz>
+    </inertia>
+  </inertial>
+  <!-- far_right LIDAR SENSOR -->
+  <sensor name="solid_lidar_far_right" type="gpu_ray">
+    <pose>0 0 0 0 0 0</pose>
+    <update_rate>5</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>2160</samples>
+          <resolution>1</resolution>
+            <min_angle>-0.523599</min_angle> <!-- -30 deg -->
+            <max_angle>0.523599</max_angle>  <!-- +30 deg -->
+        </horizontal>
+        <vertical>
+          <samples>256</samples>
+          <resolution>1</resolution>
+            <min_angle>-0.523599</min_angle> <!-- -30 deg -->
+            <max_angle>0.523599</max_angle>  <!-- +30 deg -->
+        </vertical>
+      </scan>
+      <range>
+        <min>0.2</min>
+        <max>100.0</max>
+        <resolution>0.01</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+    <plugin name="lidar_controller_far_right" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <remapping>~/out:=/scan_pointcloud_far_right</remapping>
+      </ros>
+      <output_type>sensor_msgs/PointCloud2</output_type>
+      <frame_name>base_scan_far_right</frame_name>
+      <alwaysOn>1</alwaysOn>
+      <visualize>true</visualize>
+    </plugin>
+  </sensor>
+</link>
+
+<!-- JOINT connecting far_right LIDAR to chassis -->
+<joint name="lidar_3d_far_right_joint" type="fixed">
+  <parent>chassis</parent>
+  <child>lidar_3d_far_right_link</child>
+</joint>
+
+
+
+
+
+	<!-- Lights --> 
+
+	<link name="light1">
+ 		<pose>1.8 0.4 .7 0 1.5 0</pose>
+
+ 	 	<light type="sun" name="light1">
+    	<cast_shadows>false</cast_shadows>
+
+    	<diffuse>0.8 0.8 0.8 1</diffuse>
+    	<specular>0.1 0.1 0.1 1</specular>
+
+    		<attenuation>
+      			<range>1000</range>
+      			<constant>0.9</constant>
+      			<linear>0.01</linear>
+      			<quadratic>0.001</quadratic>
+    	</attenuation>
+
+		<direction>-0.5 0.5 -1.0</direction>
+  		</light>
+	</link>
+
+    <joint name="light1_joint" type="fixed">
+      <child>light1</child>
+      <parent>chassis</parent>
+    </joint>
+
+	<!-- Lights --> 
+
+	<link name="light2">
+ 		<pose>1.8 -0.4 .7 0 1.5 0</pose>
+
+ 	 <light type="sun" name="light2">
+    <cast_shadows>false</cast_shadows>
+
+    <diffuse>0.8 0.8 0.8 1</diffuse>
+    <specular>0.1 0.1 0.1 1</specular>
+
+    <attenuation>
+      	<range>1000</range>
+      	<constant>0.9</constant>
+      	<linear>0.01</linear>
+      	<quadratic>0.001</quadratic>
+    	</attenuation>
+
+		<direction>-0.5 0.5 -1.0</direction>
+  		</light>
+	</link>
+
+    <joint name="light2_joint" type="fixed">
+      <child>light2</child>
+      <parent>chassis</parent>
+    </joint>
+
+
+	<!-- Lights --> 
+	<link name="light3">
+ 		<pose>1.8 0 .7 0 1.5 0</pose>
+
+ 	 	<light type="sun" name="light2">
+    		<cast_shadows>false</cast_shadows>
+
+    		<diffuse>0.8 0.8 0.8 1</diffuse>
+    		<specular>0.1 0.1 0.1 1</specular>
+
+    			<attenuation>
+      				<range>1000</range>
+      				<constant>0.9</constant>
+      				<linear>0.01</linear>
+      				<quadratic>0.001</quadratic>
+    			</attenuation>
+
+			<direction>-0.5 0.5 -1.0</direction>
+  		</light>
+	</link>
+
+    <joint name="light3_joint" type="fixed">
+      <child>light3</child>
+      <parent>chassis</parent>
+    </joint>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</model>
+
+
+
+
+
+
+</sdf>

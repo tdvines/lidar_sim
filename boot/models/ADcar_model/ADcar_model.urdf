@@ -1,0 +1,295 @@
+<robot name="ADcar_model">
+
+  <!-- Chassis -->
+  <link name="chassis">
+    <visual>
+      <geometry>
+        <mesh filename="package://ADcar_model/meshes/hatchback.obj" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ADcar_model/meshes/hatchback.obj" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1200"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="400" ixy="0" ixz="0" iyy="1200" iyz="0" izz="1400"/>
+    </inertial>
+  </link>
+
+  <!-- Front Steering Links -->
+  <link name="front_left_wheel_steer">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.2"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.2"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <link name="front_right_wheel_steer">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.2"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.2"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- Wheels -->
+  <link name="front_right_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.25" length="0.2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.25" length="0.2"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="20"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.6" ixy="0" ixz="0" iyy="0.6" iyz="0" izz="0.6"/>
+    </inertial>
+  </link>
+
+  <link name="front_left_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.25" length="0.2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.25" length="0.2"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="20"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.6" ixy="0" ixz="0" iyy="0.6" iyz="0" izz="0.6"/>
+    </inertial>
+  </link>
+
+  <link name="rear_right_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.25" length="0.2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.25" length="0.2"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="20"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.6" ixy="0" ixz="0" iyy="0.6" iyz="0" izz="0.6"/>
+    </inertial>
+  </link>
+
+  <link name="rear_left_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.25" length="0.2"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.25" length="0.2"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="20"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.6" ixy="0" ixz="0" iyy="0.6" iyz="0" izz="0.6"/>
+    </inertial>
+  </link>
+
+  <!-- LIDAR WIDE-->
+  <link name="lidar_3d_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.07" length="0.12"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.07" length="0.12"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <!-- LIDAR far_left-->
+  <link name="lidar_3d_far_left_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.07" length="0.12"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.07" length="0.12"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <!-- LIDAR far_right-->
+  <link name="lidar_3d_far_right_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.07" length="0.12"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.07" length="0.12"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <!-- Joints -->
+
+  <!-- Front Left Steering -->
+  <joint name="front_left_steer_joint" type="revolute">
+    <parent link="chassis"/>
+    <child link="front_left_wheel_steer"/>
+    <origin xyz="1.55 0.93 0.3" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.5" upper="0.5" effort="10" velocity="1.0"/>
+  </joint>
+
+  <!-- Front Left Wheel -->
+  <joint name="front_left_wheel_joint" type="continuous">
+    <parent link="front_left_wheel_steer"/>
+    <child link="front_left_wheel"/>
+    <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Front Right Steering -->
+  <joint name="front_right_steer_joint" type="revolute">
+    <parent link="chassis"/>
+    <child link="front_right_wheel_steer"/>
+    <origin xyz="1.55 -0.93 0.3" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.5" upper="0.5" effort="10" velocity="1.0"/>
+  </joint>
+
+  <!-- Front Right Wheel -->
+  <joint name="front_right_wheel_joint" type="continuous">
+    <parent link="front_right_wheel_steer"/>
+    <child link="front_right_wheel"/>
+    <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Rear Wheels -->
+  <joint name="rear_left_wheel_joint" type="continuous">
+    <parent link="chassis"/>
+    <child link="rear_left_wheel"/>
+    <origin xyz="-1.0 0.93 0.3" rpy="0 1.5707 1.5707"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="rear_right_wheel_joint" type="continuous">
+    <parent link="chassis"/>
+    <child link="rear_right_wheel"/>
+    <origin xyz="-1.0 -0.93 0.3" rpy="0 1.5707 1.5707"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+<!-- WIDE LIDAR -->
+  <!-- LIDAR Joint -->
+  <joint name="lidar_3d_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="lidar_3d_link"/>
+    <origin xyz="0.5 0 1.6" rpy="0 0 0"/>
+  </joint>
+  <!-- base_scan frame -->
+  <link name="base_scan"/>
+  <joint name="base_scan_joint" type="fixed">
+  <parent link="chassis"/>
+  <child link="base_scan"/>
+  <origin xyz="0.5 0 1.6" rpy="0 0 0"/>
+</joint>
+
+
+<!-- far_left LIDAR -->
+  <!-- LIDAR Joint -->
+  <joint name="lidar_3d_far_left_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="lidar_3d_far_left_link"/>
+    <origin xyz="0.6 0.5 1.5" rpy="0 0 0"/>
+  </joint>
+  <!-- base_scan_far_left frame -->
+  <link name="base_scan_far_left"/>
+  <joint name="base_scan_far_left_joint" type="fixed">
+  <parent link="chassis"/>
+  <child link="base_scan_far_left"/>
+  <origin xyz="0.6 0.5 1.5" rpy="0 0 0"/>
+</joint>
+
+<!-- far_right LIDAR -->
+  <!-- LIDAR Joint -->
+  <joint name="lidar_3d_far_right_joint" type="fixed">
+    <parent link="chassis"/>
+    <child link="lidar_3d_far_right_link"/>
+    <origin xyz="0.6 -0.5 1.5" rpy="0 0 0"/>
+  </joint>
+  <!-- base_scan_far_right frame -->
+  <link name="base_scan_far_right"/>
+  <joint name="base_scan_far_right_joint" type="fixed">
+  <parent link="chassis"/>
+  <child link="base_scan_far_right"/>
+  <origin xyz="0.6 -0.5 1.5" rpy="0 0 0"/>
+</joint>
+
+
+
+
+</robot>
