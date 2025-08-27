@@ -39,20 +39,20 @@ install(DIRECTORY models/
   DESTINATION share/${PROJECT_NAME}/models
 )
 
-# Config
-install(DIRECTORY config
-  DESTINATION share/${PROJECT_NAME}
-)
+# # Config
+# install(DIRECTORY config
+#   DESTINATION share/${PROJECT_NAME}
+# )
 
 # RViz config
 install(DIRECTORY rviz_config
   DESTINATION share/${PROJECT_NAME}
 )
 
-# Maps
-install(DIRECTORY maps
-  DESTINATION share/${PROJECT_NAME}
-)
+# # Maps
+# install(DIRECTORY maps
+#   DESTINATION share/${PROJECT_NAME}
+# )
 
 # =============================
 # Env hook for GAZEBO_MODEL_PATH
