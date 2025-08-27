@@ -38,21 +38,14 @@ It allows testing localization, obstacle detection, and LiDAR-based navigation i
     sudo apt install ros-humble-tf2-tools
 
 
-
-
-
 ## Clone and build the Repository
 ### To clone this repository with the citysim submodule, run:
 
-    mkdir ad_lidar_ws && cd ad_lidar_ws && mkdir src && cd src
+    mkdir ad_lidar_ws/src && cd ad_lidar_ws/src
     git clone --recurse-submodules https://github.com/tdvines/lidar_sim.git
-    cd lidar_sim/citysim 
-    mkdir build
-    cd build
-    cmake ..
-    make install
-    cd ../../../..
+    cd ..
     colcon build --symlink-install
+    source install/setup.bash
 
 ## Usage
 ### Launch the main simulation:

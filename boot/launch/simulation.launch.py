@@ -1,38 +1,34 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.actions import ExecuteProcess
+from ament_index_python.packages import get_package_share_directory
 import os
 
 def generate_launch_description():
-    # Path to your world file
-    world_path = os.path.join(
-        os.getenv('PWD', ''),  # current working directory
-        'src', 'boot', 'worlds', 'simple_city.world'
-    )
+    #  Get boot package share dir
+    boot_share = get_package_share_directory('boot')
+    world_path = os.path.join(boot_share, 'worlds', 'simple_city.world')
+    model_path = os.path.join(boot_share, 'models')
 
-    # Path to your ADcar_model
-    model_path = os.path.join(
-        os.getenv('PWD', ''),
-        'src', 'boot', 'models'
-    )
+    # Relative path to citysim from boot package
+    workspace_root = os.path.join(boot_share, '..', '..')  # ../../ from boot/share
+    citysim_plugin_path = os.path.join(workspace_root, 'citysim', 'lib', 'citysim-0', 'plugins')
+    print (citysim_plugin_path)
 
-    # Set GAZEBO_MODEL_PATH in the environment for this process
+
+    # Environment
     env = os.environ.copy()
-    # Prepend your model path so Gazebo finds it first
-    if 'GAZEBO_MODEL_PATH' in env:
-        env['GAZEBO_MODEL_PATH'] = model_path + ':' + env['GAZEBO_MODEL_PATH']
-    else:
-        env['GAZEBO_MODEL_PATH'] = model_path
+    env['GAZEBO_MODEL_PATH'] = model_path + ':' + env.get('GAZEBO_MODEL_PATH', '')
+    env['GAZEBO_PLUGIN_PATH'] = citysim_plugin_path + ':' + env.get('GAZEBO_PLUGIN_PATH', '')
+
 
     return LaunchDescription([
-        # Launch Gazebo with the world file
         ExecuteProcess(
             cmd=['gazebo', world_path, '--verbose'],
             output='screen',
-            env=env  # <-- pass the modified environment
+            env=env
         ),
-
-        # Example ROS Node
+        # Example Node (uncomment if needed)
         # Node(
         #     package='boot',
         #     executable='talker',
@@ -40,3 +36,8 @@ def generate_launch_description():
         #     output='screen'
         # )
     ])
+
+
+
+
+
