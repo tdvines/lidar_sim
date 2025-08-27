@@ -54,7 +54,7 @@ It allows testing localization, obstacle detection, and LiDAR-based navigation i
 ## Usage
 ### Launch the main simulation:
     source install/setup.bash
-    ros2 launch boot/run.launch.py
+    ros2 launch boot run.launch.py
 
 
 
