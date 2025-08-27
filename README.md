@@ -46,7 +46,12 @@ It allows testing localization, obstacle detection, and LiDAR-based navigation i
 
     mkdir ad_lidar_ws && cd ad_lidar_ws && mkdir src && cd src
     git clone --recurse-submodules https://github.com/tdvines/lidar_sim.git
-    cd ..
+    cd lidar_sim/citysim 
+    mkdir build
+    cd build
+    cmake ..
+    make install
+    cd ../../../..
 
 ## Build the Workspace
     colcon build --symlink-install
