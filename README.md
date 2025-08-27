@@ -41,7 +41,7 @@ It allows testing localization, obstacle detection, and LiDAR-based navigation i
 
 
 
-## Clone the Repository
+## Clone and build the Repository
 ### To clone this repository with the citysim submodule, run:
 
     mkdir ad_lidar_ws && cd ad_lidar_ws && mkdir src && cd src
@@ -52,8 +52,6 @@ It allows testing localization, obstacle detection, and LiDAR-based navigation i
     cmake ..
     make install
     cd ../../../..
-
-## Build the Workspace
     colcon build --symlink-install
 
 ## Usage
